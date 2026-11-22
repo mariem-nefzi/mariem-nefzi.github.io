@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="fr" data-lang="fr"
+      data-title-fr="Système IoT d'acquisition et d'analyse de données – Mariem Nefzi"
+      data-title-en="IoT data acquisition and analysis system – Mariem Nefzi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Système IoT d'acquisition et d'analyse de données – Mariem Nefzi</title>
+  <meta name="description" content="Projet Réseaux Locaux ENIT : acquisition IoT (STM32, ESP32, compteur PZEM), MQTT et Modbus, base MySQL, alertes e-mail, tableau de bord Power BI et chatbot.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container">
+    <a class="brand" href="../index.html">Mariem Nefzi</a>
+    <nav class="nav">
+      <a href="#realisation" class="hide-sm"><span class="fr">Réalisation</span><span class="en">Implementation</span></a>
+      <a href="../index.html#contact" class="hide-sm">Contact</a>
+      <button class="lang-btn" type="button" aria-label="Changer de langue / Switch language">EN</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <a class="back" href="../index.html#projets">
+    <span class="fr">← Tous les projets</span><span class="en">← All projects</span>
+  </a>
+
+  <div class="project-head">
+    <div class="tags" style="margin-bottom:12px">
+      <span class="tag"><span class="fr">Bureau d'Études</span><span class="en">Engineering project</span></span>
+      <span class="tag">IoT</span>
+      <span class="tag"><span class="fr">Réseaux industriels</span><span class="en">Industrial networks</span></span>
+    </div>
+    <h1>
+      <span class="fr">Système IoT d'acquisition et d'analyse de données</span>
+      <span class="en">IoT data acquisition and analysis system</span>
+    </h1>
+    <p class="lead fr">
+      Une chaîne IoT complète, des capteurs jusqu'à l'analyse : mesures environnementales et
+      électriques transmises en MQTT et Modbus, stockées dans MySQL, avec alertes par e-mail,
+      tableau de bord Power BI et un chatbot capable d'interroger les données.
+    </p>
+    <p class="lead en">
+      A complete IoT chain, from sensors to analysis: environmental and electrical measurements
+      sent over MQTT and Modbus, stored in MySQL, with e-mail alerts, a Power BI dashboard and a
+      chatbot that can query the data.
+    </p>
+    <div class="meta">
+      <span>ENIT · <span class="fr">Octobre 2025 – Janvier 2026</span><span class="en">October 2025 – January 2026</span></span>
+      <span><span class="fr">Projet en binôme avec Bochra El Haj Ahmed</span><span class="en">Team project with Bochra El Haj Ahmed</span></span>
+      <span>STM32 · ESP32 · MQTT · Modbus · MySQL · Power BI</span>
+    </div>
+  </div>
+
+  <section style="padding-top:0;border-top:0">
+    <div class="stats">
+      <div class="stat">
+        <div class="value">2</div>
+        <div class="label"><span class="fr">Protocoles industriels : MQTT et Modbus (RTU / TCP)</span><span class="en">Industrial protocols: MQTT and Modbus (RTU / TCP)</span></div>
+      </div>
+      <div class="stat">
+        <div class="value">3</div>
+        <div class="label"><span class="fr">Cartes : STM32, ESP32 et Arduino</span><span class="en">Boards: STM32, ESP32 and Arduino</span></div>
+      </div>
+      <div class="stat">
+        <div class="value">E-mail</div>
+        <div class="label"><span class="fr">Alerte automatique en cas de dépassement de seuil</span><span class="en">Automatic alert when a threshold is exceeded</span></div>
+      </div>
+      <div class="stat">
+        <div class="value">Chatbot</div>
+        <div class="label"><span class="fr">Interrogation des données en langage naturel</span><span class="en">Natural-language queries on the data</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Architecture</h2>
+    <div class="pipeline" role="img" aria-label="Chaîne : capteurs, communication, stockage, exploitation">
+      <div class="stack">
+        <div class="step">
+          <strong><span class="fr">Carte STM32 B-L475E-IOT01</span><span class="en">STM32 B-L475E-IOT01 board</span></strong>
+          <span class="fr">Température, humidité, pression, IMU · MQTT</span>
+          <span class="en">Temperature, humidity, pressure, IMU · MQTT</span>
+        </div>
+        <div class="step">
+          <strong><span class="fr">Compteur PZEM-004T + ESP32</span><span class="en">PZEM-004T meter + ESP32</span></strong>
+          <span class="fr">Tension, courant, puissance, énergie · Modbus RTU → TCP</span>
+          <span class="en">Voltage, current, power, energy · Modbus RTU → TCP</span>
+        </div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="step">
+        <strong><span class="fr">Clients Python</span><span class="en">Python clients</span></strong>
+        <span class="fr">Abonnement MQTT, lecture Modbus TCP, détection des seuils</span>
+        <span class="en">MQTT subscription, Modbus TCP reading, threshold detection</span>
+      </div>
+      <div class="arrow">→</div>
+      <div class="stack">
+        <div class="step">
+          <strong><span class="fr">Base MySQL</span><span class="en">MySQL database</span></strong>
+          <span class="fr">Mesures horodatées et alertes</span>
+          <span class="en">Timestamped measurements and alerts</span>
+        </div>
+        <div class="step">
+          <strong><span class="fr">Exploitation</span><span class="en">Use</span></strong>
+          <span class="fr">Power BI, alertes e-mail, chatbot</span>
+          <span class="en">Power BI, e-mail alerts, chatbot</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="realisation">
+    <h2><span class="fr">Réalisation</span><span class="en">Implementation</span></h2>
+
+    <h3><span class="fr">1. Acquisition et communication</span><span class="en">1. Acquisition and communication</span></h3>
+    <p class="fr">
+      La carte STM32 se connecte en Wi-Fi et publie les mesures de ses capteurs sur un broker
+      <strong>MQTT</strong>. Le compteur d'énergie PZEM est lu par un ESP32 en
+      <strong>Modbus RTU</strong> ; l'ESP32 joue aussi le rôle de serveur <strong>Modbus TCP</strong>
+      pour rendre ces mesures accessibles sur le réseau. Des scripts Python récupèrent les deux
+      flux et les enregistrent dans MySQL.
+    </p>
+    <p class="en">
+      The STM32 board connects over Wi-Fi and publishes its sensor readings to an
+      <strong>MQTT</strong> broker. The PZEM energy meter is read by an ESP32 over
+      <strong>Modbus RTU</strong>; the ESP32 also acts as a <strong>Modbus TCP</strong> server to
+      make these measurements available on the network. Python scripts collect both streams and
+      store them in MySQL.
+    </p>
+    <figure>
+      <video controls preload="metadata" playsinline>
+        <source src="../assets/img/iot/demo-modbus.mp4" type="video/mp4">
+      </video>
+      <figcaption>
+        <span class="fr">Démonstration : programmation de l'ESP32, puis lecture des mesures du compteur PZEM en Modbus TCP depuis un client Python (18 s).</span>
+        <span class="en">Demo: flashing the ESP32, then reading the PZEM meter over Modbus TCP from a Python client (18 s).</span>
+      </figcaption>
+    </figure>
+    <figure style="max-width:620px">
+      <img src="../assets/img/iot/lecture-pzem.png" alt="" loading="lazy" width="635" height="277">
+      <figcaption>
+        <span class="fr">Lecture en direct du compteur PZEM : tension, courant, puissance, énergie, fréquence et facteur de puissance.</span>
+        <span class="en">Live PZEM meter reading: voltage, current, power, energy, frequency and power factor. (Labels in French.)</span>
+      </figcaption>
+    </figure>
+
+    <h3><span class="fr">2. Alertes par e-mail</span><span class="en">2. E-mail alerts</span></h3>
+    <p class="fr">
+      À chaque nouvelle mesure, la valeur est comparée à un seuil. En cas de dépassement
+      (surtension, température élevée, mouvement brusque…), l'alerte est enregistrée en base et
+      un e-mail récapitulatif est envoyé automatiquement.
+    </p>
+    <p class="en">
+      Each new measurement is compared with a threshold. When it is exceeded (overvoltage, high
+      temperature, sudden movement…), the alert is stored in the database and a summary e-mail
+      is sent automatically.
+    </p>
+    <figure>
+      <img src="../assets/img/iot/alertes.png" alt="" loading="lazy" width="990" height="223">
+      <figcaption>
+        <span class="fr">Chaîne d'alerte : capteurs → base de données → détection du seuil → enregistrement → e-mail.</span>
+        <span class="en">Alert chain: sensors → database → threshold detection → logging → e-mail. (Labels in French.)</span>
+      </figcaption>
+    </figure>
+
+    <h3><span class="fr">3. Tableau de bord Power BI</span><span class="en">3. Power BI dashboard</span></h3>
+    <p class="fr">
+      Un tableau de bord Power BI connecté à MySQL présente les grandeurs électriques et
+      environnementales, leur évolution dans le temps et la liste des alarmes, avec des filtres par période.
+    </p>
+    <p class="en">
+      A Power BI dashboard connected to MySQL shows electrical and environmental values, their
+      evolution over time and the list of alarms, with filters by period.
+    </p>
+    <figure>
+      <img src="../assets/img/iot/dashboard-powerbi.png" alt="" loading="lazy" width="735" height="427">
+      <figcaption>
+        <span class="fr">Tableau de bord Power BI : jauges temps réel, courbes et tableau des alarmes.</span>
+        <span class="en">Power BI dashboard: real-time gauges, trends and alarm table. (Labels in French.)</span>
+      </figcaption>
+    </figure>
+
+    <h3><span class="fr">4. Chatbot connecté aux données</span><span class="en">4. Chatbot connected to the data</span></h3>
+    <p class="fr">
+      Une application web (backend Python avec API REST et WebSocket) relie un modèle de langage
+      (LLM) à la base de données : l'utilisateur pose une question en langage naturel — nombre de
+      mesures, température d'une journée… — et obtient une réponse, ou un rapport PDF.
+    </p>
+    <p class="en">
+      A web application (Python backend with REST API and WebSocket) connects a large language
+      model (LLM) to the database: the user asks a question in natural language — number of
+      records, temperature on a given day… — and gets an answer or a PDF report.
+    </p>
+    <figure style="max-width:620px">
+      <img src="../assets/img/iot/chatbot.png" alt="" loading="lazy" width="869" height="519">
+      <figcaption>
+        <span class="fr">Exemples de questions posées au chatbot sur le contenu de la base.</span>
+        <span class="en">Example questions asked to the chatbot about the database content.</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2><span class="fr">Bilan</span><span class="en">Outcome</span></h2>
+    <div class="callout fr">
+      Un système qui couvre toute la chaîne de la donnée industrielle : acquisition sur le
+      terrain, protocoles MQTT et Modbus, stockage, alertes, visualisation et accès simplifié
+      aux données grâce à l'IA.
+    </div>
+    <div class="callout en">
+      A system covering the whole industrial data chain: field acquisition, MQTT and Modbus
+      protocols, storage, alerts, visualisation and simplified data access through AI.
+    </div>
+    <h3><span class="fr">Outils</span><span class="en">Tools</span></h3>
+    <div class="tags">
+      <span class="tag">STM32</span><span class="tag">ESP32</span><span class="tag">Arduino</span>
+      <span class="tag">MQTT</span><span class="tag">Modbus RTU / TCP</span><span class="tag">Python</span>
+      <span class="tag">MySQL</span><span class="tag">Power BI</span><span class="tag">Flask / FastAPI</span><span class="tag">LLM</span>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <a href="../index.html">← <span class="fr">Retour au portfolio</span><span class="en">Back to portfolio</span></a>
+    &nbsp;·&nbsp; © 2026 Mariem Nefzi
+  </div>
+</footer>
+
+<script src="../assets/lang.js"></script>
+</body>
+</html>

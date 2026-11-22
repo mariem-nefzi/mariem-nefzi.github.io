@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="fr" data-lang="fr"
+      data-title-fr="Prévision énergétique par Machine Learning – Mariem Nefzi"
+      data-title-en="Energy forecasting with Machine Learning – Mariem Nefzi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prévision énergétique par Machine Learning – Mariem Nefzi</title>
+  <meta name="description" content="Projet de mastère de recherche : prévision de la consommation énergétique et détection d'anomalies par Machine Learning sur des données réelles de l'ENIT.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container">
+    <a class="brand" href="../index.html">Mariem Nefzi</a>
+    <nav class="nav">
+      <a href="#resultats" class="hide-sm"><span class="fr">Résultats</span><span class="en">Results</span></a>
+      <a href="../index.html#contact" class="hide-sm">Contact</a>
+      <button class="lang-btn" type="button" aria-label="Changer de langue / Switch language">EN</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <a class="back" href="../index.html#projets">
+    <span class="fr">← Tous les projets</span><span class="en">← All projects</span>
+  </a>
+
+  <!-- ===== En-tête ===== -->
+  <div class="project-head">
+    <div class="tags" style="margin-bottom:12px">
+      <span class="tag"><span class="fr">Mastère de recherche</span><span class="en">Research master's</span></span>
+      <span class="tag">Machine Learning</span>
+      <span class="tag">Deep Learning</span>
+      <span class="tag"><span class="fr">Énergie</span><span class="en">Energy</span></span>
+    </div>
+    <h1>
+      <span class="fr">Prévision de la consommation énergétique et détection d'anomalies par Machine Learning</span>
+      <span class="en">Energy consumption forecasting and anomaly detection with Machine Learning</span>
+    </h1>
+    <p class="lead fr">
+      Comment exploiter les données d'une plateforme de supervision SCADA/IoT au-delà des
+      alarmes à seuils fixes ? Étude comparative de méthodes statistiques, de Machine Learning
+      et de Deep Learning sur des données réelles de l'ENIT.
+    </p>
+    <p class="lead en">
+      How can the data from a SCADA/IoT monitoring platform be used beyond fixed-threshold
+      alarms? A comparative study of statistical, Machine Learning and Deep Learning methods
+      on real data from ENIT.
+    </p>
+    <div class="meta">
+      <span>ENIT · <span class="fr">Juin – Octobre 2026</span><span class="en">June – October 2026</span></span>
+      <span>Python · LightGBM · PyTorch</span>
+    </div>
+  </div>
+
+  <!-- ===== Chiffres clés ===== -->
+  <section style="padding-top:0;border-top:0">
+    <div class="stats">
+      <div class="stat">
+        <div class="value">21,5 %</div>
+        <div class="label">
+          <span class="fr">Erreur CV(RMSE) de LightGBM à l'heure suivante (seuil ASHRAE : 30 %)</span>
+          <span class="en">LightGBM CV(RMSE) error, hour-ahead (ASHRAE threshold: 30%)</span>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="value">+43,6 %</div>
+        <div class="label">
+          <span class="fr">Gain de précision par rapport à la prévision naïve</span>
+          <span class="en">Accuracy gain over the naive forecast</span>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="value">73 %</div>
+        <div class="label">
+          <span class="fr">Des anomalies détectées par la méthode fondée sur la prévision</span>
+          <span class="en">Of anomalies detected by the forecast-based method</span>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="value">60 %</div>
+        <div class="label">
+          <span class="fr">De l'énergie consommée en dehors des heures d'occupation</span>
+          <span class="en">Of energy consumed outside occupied hours</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contexte ===== -->
+  <section>
+    <h2><span class="fr">Contexte</span><span class="en">Context</span></h2>
+    <p class="fr">
+      Les plateformes de supervision énergétique collectent beaucoup de mesures, mais leur
+      exploitation reste souvent descriptive : des courbes et des alarmes déclenchées par des
+      seuils fixes. Ces seuils ne tiennent pas compte du contexte — une consommation normale un
+      lundi de cours peut être anormale un dimanche de vacances.
+    </p>
+    <p class="en">
+      Energy monitoring platforms collect large amounts of measurements, but they are often used
+      only descriptively: trend charts and alarms triggered by fixed thresholds. Those thresholds
+      ignore context — consumption that is normal on a teaching Monday can be abnormal on a
+      holiday Sunday.
+    </p>
+    <p class="fr">
+      Ce travail s'appuie sur <strong>35 semaines de mesures horaires réelles</strong> d'un compteur
+      de l'ENIT, complétées par des données météo, et traite trois questions :
+    </p>
+    <p class="en">
+      This work is based on <strong>35 weeks of real hourly measurements</strong> from an ENIT
+      energy meter, combined with weather data, and addresses three questions:
+    </p>
+    <ul class="clean fr">
+      <li><strong>Prévision</strong> : quel modèle prévoit le mieux la consommation, à l'heure suivante et au jour suivant ?</li>
+      <li><strong>Détection d'anomalies</strong> : quelle méthode repère le mieux les consommations anormales ?</li>
+      <li><strong>Performance énergétique</strong> : quels indicateurs révèlent les leviers d'économie ?</li>
+    </ul>
+    <ul class="clean en">
+      <li><strong>Forecasting</strong>: which model best predicts consumption, one hour and one day ahead?</li>
+      <li><strong>Anomaly detection</strong>: which method best identifies abnormal consumption?</li>
+      <li><strong>Energy performance</strong>: which indicators reveal where energy can be saved?</li>
+    </ul>
+  </section>
+
+  <!-- ===== Démarche ===== -->
+  <section>
+    <h2><span class="fr">Démarche</span><span class="en">Approach</span></h2>
+
+    <div class="pipeline" role="img" aria-label="Pipeline : données, prétraitement, prévision / détection / indicateurs, recommandations">
+      <div class="step">
+        <strong><span class="fr">Données</span><span class="en">Data</span></strong>
+        <span class="fr">Base SQLite du système de suivi + météo (API Open-Meteo)</span>
+        <span class="en">SQLite database of the monitoring system + weather (Open-Meteo API)</span>
+      </div>
+      <div class="arrow">→</div>
+      <div class="step">
+        <strong><span class="fr">Prétraitement</span><span class="en">Preprocessing</span></strong>
+        <span class="fr">Nettoyage, agrégation horaire, calendrier académique</span>
+        <span class="en">Cleaning, hourly aggregation, academic calendar</span>
+      </div>
+      <div class="arrow">→</div>
+      <div class="stack">
+        <div class="step">
+          <strong><span class="fr">Prévision</span><span class="en">Forecasting</span></strong>
+          <span class="fr">Naïf saisonnier, TOWT, LightGBM, LSTM</span>
+          <span class="en">Seasonal naive, TOWT, LightGBM, LSTM</span>
+        </div>
+        <div class="step">
+          <strong><span class="fr">Détection</span><span class="en">Detection</span></strong>
+          <span class="fr">Z-score robuste, Isolation Forest, écart à la prévision</span>
+          <span class="en">Robust Z-score, Isolation Forest, forecast residuals</span>
+        </div>
+        <div class="step">
+          <strong><span class="fr">Indicateurs</span><span class="en">Indicators</span></strong>
+          <span class="fr">Charge de base, facteur de charge, CUSUM</span>
+          <span class="en">Base load, load factor, CUSUM</span>
+        </div>
+      </div>
+    </div>
+
+    <ul class="clean fr" style="margin-top:20px">
+      <li>Deux horizons de prévision : <strong>heure suivante</strong> et <strong>jour suivant</strong>.</li>
+      <li>Validation chronologique à origine glissante, pour reproduire une utilisation réelle.</li>
+      <li>Critères d'acceptation de l'<strong>ASHRAE Guideline 14</strong> : CV(RMSE) &lt; 30 % et NMBE entre −10 et +10 %.</li>
+      <li>Anomalies de trois types (ponctuelles, contextuelles, collectives) insérées dans les données de test pour mesurer la détection.</li>
+    </ul>
+    <ul class="clean en" style="margin-top:20px">
+      <li>Two forecasting horizons: <strong>hour-ahead</strong> and <strong>day-ahead</strong>.</li>
+      <li>Rolling-origin chronological validation, to reproduce real-world use.</li>
+      <li>Acceptance criteria from <strong>ASHRAE Guideline 14</strong>: CV(RMSE) &lt; 30% and NMBE between −10 and +10%.</li>
+      <li>Three types of anomalies (point, contextual, collective) injected into the test data to measure detection.</li>
+    </ul>
+  </section>
+
+  <!-- ===== Résultats : prévision ===== -->
+  <section id="resultats">
+    <h2><span class="fr">Résultats — Prévision</span><span class="en">Results — Forecasting</span></h2>
+    <p class="fr">
+      <strong>LightGBM est le meilleur modèle aux deux horizons</strong> et respecte les critères
+      de l'ASHRAE. Le LSTM fait presque aussi bien à l'heure suivante, mais devient instable au
+      jour suivant avec un historique aussi court. TOWT, qui ne connaît pas le calendrier
+      académique, ne bat pas la prévision naïve.
+    </p>
+    <p class="en">
+      <strong>LightGBM is the best model at both horizons</strong> and meets the ASHRAE criteria.
+      The LSTM performs almost as well hour-ahead but becomes unstable day-ahead with such a short
+      history. TOWT, which has no knowledge of the academic calendar, does not beat the naive forecast.
+    </p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th><span class="fr">Modèle</span><span class="en">Model</span></th>
+            <th class="num">CV(RMSE) <span class="fr">heure suiv.</span><span class="en">hour-ahead</span></th>
+            <th class="num">CV(RMSE) <span class="fr">jour suiv.</span><span class="en">day-ahead</span></th>
+            <th class="num">ASHRAE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>TOWT</td><td class="num">40,2 %</td><td class="num">40,2 %</td><td class="num"><span class="fr">non</span><span class="en">no</span></td></tr>
+          <tr class="best"><td>LightGBM</td><td class="num">21,5 %</td><td class="num">25,7 %</td><td class="num"><span class="fr">oui</span><span class="en">yes</span></td></tr>
+          <tr><td>LSTM</td><td class="num">21,9 %</td><td class="num">42,9 %</td><td class="num"><span class="fr">h+1 seulement</span><span class="en">hour-ahead only</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <figure>
+      <img src="../assets/img/mastere/prev_semaine_test.png" alt="" loading="lazy" width="2000" height="1240">
+      <figcaption>
+        <span class="fr">Prévisions des modèles sur une semaine de test, à l'heure suivante (haut) et au jour suivant (bas). En noir : la mesure réelle.</span>
+        <span class="en">Model forecasts over one test week, hour-ahead (top) and day-ahead (bottom). Black: actual measurement. (Chart labels in French.)</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ===== Résultats : détection ===== -->
+  <section>
+    <h2><span class="fr">Résultats — Détection d'anomalies</span><span class="en">Results — Anomaly detection</span></h2>
+    <p class="fr">
+      La <strong>détection fondée sur la prévision</strong> (écart entre la mesure et la valeur
+      attendue par LightGBM) est la plus efficace : elle retrouve près de trois anomalies sur
+      quatre, avec environ une fausse alarme tous les quatre jours. Elle repère aussi des
+      consommations anormales que les alarmes à seuils fixes ne voient pas.
+    </p>
+    <p class="en">
+      <strong>Forecast-based detection</strong> (the gap between the measurement and the value
+      expected by LightGBM) performs best: it finds nearly three out of four anomalies, with about
+      one false alarm every four days. It also catches abnormal consumption that fixed-threshold
+      alarms miss.
+    </p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th><span class="fr">Méthode</span><span class="en">Method</span></th>
+            <th class="num"><span class="fr">Rappel</span><span class="en">Recall</span></th>
+            <th class="num">F1</th>
+            <th class="num"><span class="fr">Fausses alarmes / jour</span><span class="en">False alarms / day</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="fr">Z-score robuste</span><span class="en">Robust Z-score</span></td><td class="num">0,37</td><td class="num">0,45</td><td class="num">0,10</td></tr>
+          <tr><td>Isolation Forest</td><td class="num">0,03</td><td class="num">0,06</td><td class="num">0,00</td></tr>
+          <tr class="best"><td><span class="fr">Prévision — heure suivante</span><span class="en">Forecast — hour-ahead</span></td><td class="num">0,73</td><td class="num">0,60</td><td class="num">0,27</td></tr>
+          <tr><td><span class="fr">Prévision — jour suivant</span><span class="en">Forecast — day-ahead</span></td><td class="num">0,51</td><td class="num">0,55</td><td class="num">0,12</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <figure>
+      <img src="../assets/img/mastere/det_rappel_type.png" alt="" loading="lazy" width="2000" height="760">
+      <figcaption>
+        <span class="fr">Part des anomalies détectées par chaque méthode, selon leur type (ponctuelle, contextuelle, collective).</span>
+        <span class="en">Share of anomalies detected by each method, by type (point, contextual, collective). (Chart labels in French.)</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ===== Résultats : indicateurs ===== -->
+  <section>
+    <h2><span class="fr">Résultats — Performance énergétique</span><span class="en">Results — Energy performance</span></h2>
+    <p class="fr">
+      Les indicateurs hebdomadaires montrent qu'en moyenne <strong>60 % de l'énergie est consommée
+      en dehors des heures d'occupation</strong> : la charge de base (nuits, week-ends, vacances)
+      est le principal levier d'économie.
+    </p>
+    <p class="en">
+      Weekly indicators show that on average <strong>60% of the energy is consumed outside occupied
+      hours</strong>: the base load (nights, weekends, holidays) is the main lever for savings.
+    </p>
+    <figure>
+      <img src="../assets/img/mastere/kpi_classiques.png" alt="" loading="lazy" width="2000" height="1400">
+      <figcaption>
+        <span class="fr">Évolution hebdomadaire de la charge de base, du facteur de charge et de la part hors occupation (fond coloré : cours, examens, vacances).</span>
+        <span class="en">Weekly base load, load factor and off-hours share (background: teaching, exams, holidays). (Chart labels in French.)</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ===== Conclusions ===== -->
+  <section>
+    <h2><span class="fr">Ce que j'en retiens</span><span class="en">Key takeaways</span></h2>
+    <div class="callout fr">
+      Sur ce type de données, la méthode la plus utile n'est pas la plus complexe, mais celle qui
+      tient compte du contexte — en particulier le calendrier académique et la consommation récente.
+    </div>
+    <div class="callout en">
+      On this kind of data, the most useful method is not the most complex one, but the one that
+      takes context into account — especially the academic calendar and recent consumption.
+    </div>
+    <h3><span class="fr">Recommandations pour la plateforme SCADA/IoT</span><span class="en">Recommendations for the SCADA/IoT platform</span></h3>
+    <ul class="clean fr">
+      <li>Réentraîner le modèle de prévision régulièrement, par exemple chaque semaine.</li>
+      <li>Ajouter la détection par prévision aux alarmes existantes, avec un seuil réglé pour limiter les fausses alarmes.</li>
+      <li>Intégrer le calendrier académique à la plateforme.</li>
+      <li>Améliorer la continuité de l'enregistrement des mesures.</li>
+    </ul>
+    <ul class="clean en">
+      <li>Retrain the forecasting model regularly, for example every week.</li>
+      <li>Add forecast-based detection to the existing alarms, with a threshold tuned to limit false alarms.</li>
+      <li>Integrate the academic calendar into the platform.</li>
+      <li>Improve the continuity of data logging.</li>
+    </ul>
+
+    <h3><span class="fr">Outils</span><span class="en">Tools</span></h3>
+    <div class="tags">
+      <span class="tag">Python</span><span class="tag">pandas</span><span class="tag">NumPy</span>
+      <span class="tag">scikit-learn</span><span class="tag">LightGBM</span><span class="tag">PyTorch</span>
+      <span class="tag">Matplotlib</span><span class="tag">SQLite</span><span class="tag">Open-Meteo API</span>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <a href="../index.html">← <span class="fr">Retour au portfolio</span><span class="en">Back to portfolio</span></a>
+    &nbsp;·&nbsp; © 2026 Mariem Nefzi
+  </div>
+</footer>
+
+<script src="../assets/lang.js"></script>
+</body>
+</html>

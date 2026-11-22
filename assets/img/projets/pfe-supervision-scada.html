@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="fr" data-lang="fr"
+      data-title-fr="Supervision énergétique SCADA de l'ENIT – Mariem Nefzi"
+      data-title-en="SCADA energy monitoring for ENIT – Mariem Nefzi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Supervision énergétique SCADA de l'ENIT – Mariem Nefzi</title>
+  <meta name="description" content="Projet de fin d'études chez Integration Objects : conception et déploiement d'un système SCADA de supervision énergétique pour l'ENIT (Modbus, MQTT, SQL Server, IHM temps réel, rapports automatiques).">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container">
+    <a class="brand" href="../index.html">Mariem Nefzi</a>
+    <nav class="nav">
+      <a href="#realisation" class="hide-sm"><span class="fr">Réalisation</span><span class="en">Implementation</span></a>
+      <a href="../index.html#contact" class="hide-sm">Contact</a>
+      <button class="lang-btn" type="button" aria-label="Changer de langue / Switch language">EN</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <a class="back" href="../index.html#projets">
+    <span class="fr">← Tous les projets</span><span class="en">← All projects</span>
+  </a>
+
+  <!-- ===== En-tête ===== -->
+  <div class="project-head">
+    <div class="tags" style="margin-bottom:12px">
+      <span class="tag"><span class="fr">Projet de fin d'études</span><span class="en">Final-year project</span></span>
+      <span class="tag">SCADA</span>
+      <span class="tag">IIoT</span>
+      <span class="tag"><span class="fr">Énergie</span><span class="en">Energy</span></span>
+    </div>
+    <h1>
+      <span class="fr">Système SCADA de supervision énergétique pour l'ENIT</span>
+      <span class="en">SCADA energy monitoring system for ENIT</span>
+    </h1>
+    <p class="lead fr">
+      Conception et déploiement d'une plateforme de supervision de la consommation électrique
+      de l'École Nationale d'Ingénieurs de Tunis : de l'acquisition des mesures sur le terrain
+      jusqu'à l'IHM temps réel, aux alarmes et aux rapports automatiques.
+    </p>
+    <p class="lead en">
+      Design and deployment of a platform that monitors the electricity consumption of the
+      National Engineering School of Tunis: from field data acquisition to a real-time HMI,
+      alarms and automatic reports.
+    </p>
+    <div class="meta">
+      <span>Integration Objects · <span class="fr">Février – Juin 2026</span><span class="en">February – June 2026</span></span>
+      <span>SIOTH · Modbus TCP · MQTT · SQL Server</span>
+    </div>
+  </div>
+
+  <!-- ===== Chiffres clés ===== -->
+  <section style="padding-top:0;border-top:0">
+    <div class="stats">
+      <div class="stat">
+        <div class="value">3</div>
+        <div class="label"><span class="fr">Compteurs Siemens SENTRON PAC3200 (Modbus TCP)</span><span class="en">Siemens SENTRON PAC3200 meters (Modbus TCP)</span></div>
+      </div>
+      <div class="stat">
+        <div class="value">MQTT</div>
+        <div class="label"><span class="fr">Interrupteurs intelligents commandés à distance</span><span class="en">Smart switches controlled remotely</span></div>
+      </div>
+      <div class="stat">
+        <div class="value">1 min</div>
+        <div class="label"><span class="fr">Pas d'enregistrement des mesures en base</span><span class="en">Measurement logging interval</span></div>
+      </div>
+      <div class="stat">
+        <div class="value"><span class="fr">Quotidien</span><span class="en">Daily</span></div>
+        <div class="label"><span class="fr">Rapport énergétique envoyé automatiquement par e-mail</span><span class="en">Energy report sent automatically by e-mail</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contexte ===== -->
+  <section>
+    <h2><span class="fr">Contexte</span><span class="en">Context</span></h2>
+    <p class="fr">
+      L'ENIT ne disposait d'aucun outil structuré pour suivre sa consommation électrique, ce qui
+      rendait impossible toute démarche d'optimisation. Réalisé au sein du département
+      Automatisation d'Integration Objects, ce projet de fin d'études visait à mettre en place
+      une supervision énergétique centralisée du site.
+    </p>
+    <p class="en">
+      ENIT had no structured tool to track its electricity consumption, which made any
+      optimisation effort impossible. Carried out within the Automation department of
+      Integration Objects, this final-year project aimed to set up centralised energy monitoring for the site.
+    </p>
+  </section>
+
+  <!-- ===== Architecture ===== -->
+  <section>
+    <h2><span class="fr">Architecture</span><span class="en">Architecture</span></h2>
+
+    <div class="pipeline" role="img" aria-label="Chaîne : terrain, acquisition, stockage et supervision">
+      <div class="stack">
+        <div class="step">
+          <strong><span class="fr">Compteurs d'énergie</span><span class="en">Energy meters</span></strong>
+          Siemens SENTRON PAC3200 · Modbus TCP/IP
+        </div>
+        <div class="step">
+          <strong><span class="fr">Interrupteurs intelligents</span><span class="en">Smart switches</span></strong>
+          Sonoff POW Elite · MQTT
+        </div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="step">
+        <strong><span class="fr">Acquisition</span><span class="en">Acquisition</span></strong>
+        <span class="fr">Plateforme SIOTH, serveur OPC UA, alarmes</span>
+        <span class="en">SIOTH platform, OPC UA server, alarms</span>
+      </div>
+      <div class="arrow">→</div>
+      <div class="stack">
+        <div class="step">
+          <strong><span class="fr">Stockage</span><span class="en">Storage</span></strong>
+          <span class="fr">Base SQL Server, enregistrement minutaire</span>
+          <span class="en">SQL Server database, one-minute logging</span>
+        </div>
+        <div class="step">
+          <strong><span class="fr">Supervision</span><span class="en">Supervision</span></strong>
+          <span class="fr">IHM temps réel, rapports journaliers</span>
+          <span class="en">Real-time HMI, daily reports</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Réalisation ===== -->
+  <section id="realisation">
+    <h2><span class="fr">Réalisation</span><span class="en">Implementation</span></h2>
+
+    <h3><span class="fr">IHM de supervision</span><span class="en">Supervision HMI</span></h3>
+    <p class="fr">
+      L'interface, développée sous SIOTH, part d'une vue globale du campus qui résume l'état de
+      chaque compteur, puis donne accès au détail de chaque point de mesure : tensions, courants
+      par phase, puissances, facteur de puissance, taux de distorsion harmonique, consommation
+      horaire, journalière et mensuelle, et coût selon les paliers tarifaires de la STEG.
+    </p>
+    <p class="en">
+      The interface, built on SIOTH, starts from an overview of the campus summarising the status
+      of each meter, then gives access to the details of each measurement point: voltages,
+      per-phase currents, power, power factor, total harmonic distortion, hourly, daily and monthly
+      consumption, and cost based on the STEG (national utility) tariff bands.
+    </p>
+    <figure>
+      <img src="../assets/img/pfe/vue-globale.png" alt="" loading="lazy" width="1822" height="714">
+      <figcaption>
+        <span class="fr">Vue globale : plan du campus et synthèse des trois compteurs.</span>
+        <span class="en">Overview: campus map and summary of the three meters. (Interface in French.)</span>
+      </figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/img/pfe/supervision-compteur.png" alt="" loading="lazy" width="1907" height="914">
+      <figcaption>
+        <span class="fr">Supervision d'un compteur : grandeurs électriques en temps réel, consommation, facturation et alarmes.</span>
+        <span class="en">Meter view: real-time electrical values, consumption, billing and alarms. (Interface in French.)</span>
+      </figcaption>
+    </figure>
+
+    <h3><span class="fr">Alarmes et rapports automatiques</span><span class="en">Alarms and automatic reports</span></h3>
+    <p class="fr">
+      Les seuils d'alarme ont été définis à partir des besoins du client et des normes
+      <strong>NF EN 50160</strong> (qualité de la tension) et <strong>IEEE 519</strong>
+      (distorsion harmonique). Chaque jour, un rapport de supervision énergétique est généré
+      automatiquement — indicateurs clés, données électriques et tableau des alarmes — puis
+      envoyé par e-mail.
+    </p>
+    <p class="en">
+      Alarm thresholds were set from the client's requirements and the <strong>NF EN 50160</strong>
+      (voltage quality) and <strong>IEEE 519</strong> (harmonic distortion) standards. Every day, an
+      energy monitoring report is generated automatically — key indicators, electrical data and
+      alarm table — and sent by e-mail.
+    </p>
+
+    <h3><span class="fr">Interrupteurs intelligents et commande à distance</span><span class="en">Smart switches and remote control</span></h3>
+    <p class="fr">
+      Les interrupteurs Sonoff POW Elite remontent leurs mesures par MQTT et peuvent être
+      commandés à distance depuis l'IHM (marche / arrêt).
+    </p>
+    <p class="en">
+      The Sonoff POW Elite switches report their measurements over MQTT and can be switched
+      on and off remotely from the HMI.
+    </p>
+    <figure>
+      <img src="../assets/img/pfe/interrupteur.png" alt="" loading="lazy" width="1902" height="755">
+      <figcaption>
+        <span class="fr">Fiche d'un interrupteur intelligent : état, tension, courant, facteur de puissance et énergie.</span>
+        <span class="en">Smart switch card: state, voltage, current, power factor and energy. (Interface in French.)</span>
+      </figcaption>
+    </figure>
+
+    <h3><span class="fr">Tests et validation</span><span class="en">Testing and validation</span></h3>
+    <ul class="clean fr">
+      <li><strong>Modbus TCP/IP</strong> : lecture des compteurs vérifiée avec un client OPC UA, puis comparée aux valeurs affichées dans l'IHM et enregistrées en base.</li>
+      <li><strong>MQTT</strong> : réception des mesures des interrupteurs et envoi de commandes via le broker.</li>
+      <li><strong>Rapport journalier</strong> : contrôle des indicateurs calculés et de l'envoi automatique.</li>
+    </ul>
+    <ul class="clean en">
+      <li><strong>Modbus TCP/IP</strong>: meter readings checked with an OPC UA client, then compared with the values shown in the HMI and stored in the database.</li>
+      <li><strong>MQTT</strong>: switch measurements received and commands sent through the broker.</li>
+      <li><strong>Daily report</strong>: calculated indicators and automatic sending verified.</li>
+    </ul>
+  </section>
+
+  <!-- ===== Bilan ===== -->
+  <section>
+    <h2><span class="fr">Bilan</span><span class="en">Outcome</span></h2>
+    <div class="callout fr">
+      Une chaîne complète, du compteur sur le terrain jusqu'au rapport envoyé par e-mail, validée
+      en conditions réelles et prête à être exploitée par l'ENIT. Mon
+      <a href="mastere-prevision-energie.html">projet de mastère</a> prolonge ce travail en étudiant
+      l'apport du Machine Learning pour exploiter les données de ce type de plateforme.
+    </div>
+    <div class="callout en">
+      A complete chain, from the field meter to the report sent by e-mail, validated in real
+      conditions and ready to be operated by ENIT. My
+      <a href="mastere-prevision-energie.html">master's project</a> extends this work by studying
+      how Machine Learning can make use of the data from this kind of platform.
+    </div>
+
+    <h3><span class="fr">Outils et technologies</span><span class="en">Tools and technologies</span></h3>
+    <div class="tags">
+      <span class="tag">SIOTH</span><span class="tag">OPC UA</span><span class="tag">Modbus TCP/IP</span>
+      <span class="tag">MQTT / Sparkplug</span><span class="tag">SQL Server</span>
+      <span class="tag">Siemens SENTRON PAC3200</span><span class="tag">Sonoff POW Elite</span>
+    </div>
+    <p class="muted" style="margin-top:18px;font-size:0.88rem">
+      <span class="fr">Projet réalisé chez Integration Objects. Seul un extrait de l'interface est présenté ici.</span>
+      <span class="en">Project carried out at Integration Objects. Only an excerpt of the interface is shown here.</span>
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <a href="../index.html">← <span class="fr">Retour au portfolio</span><span class="en">Back to portfolio</span></a>
+    &nbsp;·&nbsp; © 2026 Mariem Nefzi
+  </div>
+</footer>
+
+<script src="../assets/lang.js"></script>
+</body>
+</html>

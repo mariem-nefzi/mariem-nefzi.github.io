@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="fr" data-lang="fr"
+      data-title-fr="Mariem Nefzi – Portfolio"
+      data-title-en="Mariem Nefzi – Portfolio">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mariem Nefzi – Portfolio</title>
+  <meta name="description" content="Portfolio de Mariem Nefzi, ingénieure automatisme : SCADA, IIoT et Machine Learning appliqué à l'énergie.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container">
+    <a class="brand" href="index.html">Mariem Nefzi</a>
+    <nav class="nav">
+      <a href="#projets"><span class="fr">Projets</span><span class="en">Projects</span></a>
+      <a href="#contact" class="hide-sm">Contact</a>
+      <button class="lang-btn" type="button" aria-label="Changer de langue / Switch language">EN</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="hero" style="border-top:0">
+    <img src="assets/img/photo.jpg" alt="Mariem Nefzi" width="132" height="132">
+    <div>
+      <h1>Mariem Nefzi</h1>
+      <div class="role">
+        <span class="fr">Ingénieure Automatisme · SCADA, IIoT &amp; Machine Learning pour l'énergie</span>
+        <span class="en">Automation Engineer · SCADA, IIoT &amp; Machine Learning for energy</span>
+      </div>
+      <p class="lead fr">
+        Ingénieure en Génie Électrique et titulaire d'un mastère de recherche de l'ENIT,
+        actuellement Ingénieure Automatisme chez Integration Objects. Je m'intéresse à
+        la supervision industrielle et à l'exploitation des données qu'elle produit.
+      </p>
+      <p class="lead en">
+        Electrical Engineer with a research master's degree from ENIT, currently working as
+        an Automation Engineer at Integration Objects. My focus is industrial supervision
+        and making use of the data it produces.
+      </p>
+    </div>
+  </section>
+
+  <section id="projets">
+    <h2><span class="fr">Projets</span><span class="en">Projects</span></h2>
+    <div class="cards">
+
+      <a class="card" href="projets/mastere-prevision-energie.html">
+        <img src="assets/img/mastere/prev_semaine_test.png" alt="" loading="lazy" width="2000" height="1240">
+        <div class="body">
+          <div class="tags">
+            <span class="tag"><span class="fr">Mastère de recherche</span><span class="en">Research master's</span></span>
+            <span class="tag">Machine Learning</span>
+          </div>
+          <h3>
+            <span class="fr">Prévision énergétique et détection d'anomalies par Machine Learning</span>
+            <span class="en">Energy forecasting and anomaly detection with Machine Learning</span>
+          </h3>
+          <p class="fr">Comparaison de TOWT, LightGBM et LSTM sur 35 semaines de données réelles de l'ENIT.</p>
+          <p class="en">Comparison of TOWT, LightGBM and LSTM on 35 weeks of real data from ENIT.</p>
+        </div>
+      </a>
+
+      <a class="card" href="projets/pfe-supervision-scada.html">
+        <img src="assets/img/pfe/supervision-compteur.png" alt="" loading="lazy" width="1907" height="914">
+        <div class="body">
+          <div class="tags">
+            <span class="tag"><span class="fr">Projet de fin d'études</span><span class="en">Final-year project</span></span>
+            <span class="tag">SCADA</span>
+          </div>
+          <h3>
+            <span class="fr">Système SCADA de supervision énergétique pour l'ENIT</span>
+            <span class="en">SCADA energy monitoring system for ENIT</span>
+          </h3>
+          <p class="fr">Compteurs Modbus, interrupteurs MQTT, SQL Server, IHM temps réel et rapports automatiques — chez Integration Objects.</p>
+          <p class="en">Modbus meters, MQTT switches, SQL Server, real-time HMI and automatic reports — at Integration Objects.</p>
+        </div>
+      </a>
+
+      <a class="card" href="projets/iot-reseau-local.html">
+        <img src="assets/img/iot/dashboard-powerbi.png" alt="" loading="lazy" width="735" height="427">
+        <div class="body">
+          <div class="tags">
+            <span class="tag"><span class="fr">Bureau d'Études</span><span class="en">Engineering project</span></span>
+            <span class="tag">IoT</span>
+          </div>
+          <h3>
+            <span class="fr">Système IoT d'acquisition et d'analyse de données</span>
+            <span class="en">IoT data acquisition and analysis system</span>
+          </h3>
+          <p class="fr">STM32, ESP32 et compteur PZEM, MQTT et Modbus, MySQL, alertes e-mail, Power BI et chatbot.</p>
+          <p class="en">STM32, ESP32 and PZEM meter, MQTT and Modbus, MySQL, e-mail alerts, Power BI and chatbot.</p>
+        </div>
+      </a>
+
+      <a class="card" href="projets/drone-commande-numerique.html">
+        <img src="assets/img/drone/drone.jpg" alt="" loading="lazy" width="1400" height="1050">
+        <div class="body">
+          <div class="tags">
+            <span class="tag"><span class="fr">Bureau d'Études</span><span class="en">Engineering project</span></span>
+            <span class="tag"><span class="fr">Automatique</span><span class="en">Control</span></span>
+          </div>
+          <h3>
+            <span class="fr">Commande numérique d'un drone quadricoptère</span>
+            <span class="en">Digital control of a quadcopter drone</span>
+          </h3>
+          <p class="fr">Filtre de Kalman, commande optimale LQR sous Simulink et implémentation embarquée sur STM32.</p>
+          <p class="en">Kalman filter, LQR optimal control in Simulink and embedded implementation on STM32.</p>
+        </div>
+      </a>
+
+      <a class="card" href="projets/detection-cancer-peau.html">
+        <img src="assets/img/cancer-peau/segmentation.png" alt="" loading="lazy" width="1431" height="436">
+        <div class="body">
+          <div class="tags">
+            <span class="tag"><span class="fr">Bureau d'Études</span><span class="en">Engineering project</span></span>
+            <span class="tag"><span class="fr">Traitement d'images</span><span class="en">Image processing</span></span>
+          </div>
+          <h3>
+            <span class="fr">Détection du cancer de la peau par traitement d'images</span>
+            <span class="en">Skin cancer detection with image processing</span>
+          </h3>
+          <p class="fr">Prétraitement, segmentation et classification bénin / malin (87 % d'accuracy), avec une application web.</p>
+          <p class="en">Preprocessing, segmentation and benign / malignant classification (87% accuracy), with a web application.</p>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact">
+      <a href="mailto:mariem.nefzi@etudiant-enit.utm.tn">mariem.nefzi@etudiant-enit.utm.tn</a>
+      <a href="https://www.linkedin.com/in/mariem-nefzi-090bb234a/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">© 2026 Mariem Nefzi</div>
+</footer>
+
+<script src="assets/lang.js"></script>
+</body>
+</html>
