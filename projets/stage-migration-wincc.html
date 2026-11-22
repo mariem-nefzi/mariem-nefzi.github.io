@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="fr" data-lang="fr"
+      data-title-fr="Migration d'une bibliothèque vers WinCC Unified et V7.5 – Mariem Nefzi"
+      data-title-en="Library migration to WinCC Unified and V7.5 – Mariem Nefzi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Migration d'une bibliothèque vers WinCC Unified et V7.5 – Mariem Nefzi</title>
+  <meta name="description" content="Stage ingénieur chez 3IA Technology : migration d'une bibliothèque de fonctions Siemens (SCL, UDT, faceplates) vers WinCC Unified et WinCC V7.5.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container">
+    <a class="brand" href="../index.html">Mariem Nefzi</a>
+    <nav class="nav">
+      <a href="#realisation" class="hide-sm"><span class="fr">Réalisation</span><span class="en">Implementation</span></a>
+      <a href="../index.html#contact" class="hide-sm">Contact</a>
+      <button class="lang-btn" type="button" aria-label="Changer de langue / Switch language">EN</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <a class="back" href="../index.html#projets">
+    <span class="fr">← Tous les projets</span><span class="en">← All projects</span>
+  </a>
+
+  <div class="project-head">
+    <div class="tags" style="margin-bottom:12px">
+      <span class="tag"><span class="fr">Stage ingénieur</span><span class="en">Engineering internship</span></span>
+      <span class="tag">Siemens</span>
+      <span class="tag">HMI</span>
+    </div>
+    <h1>
+      <span class="fr">Migration d'une bibliothèque de fonctions vers WinCC Unified et WinCC V7.5</span>
+      <span class="en">Migrating a function library to WinCC Unified and WinCC V7.5</span>
+    </h1>
+    <p class="lead fr">
+      Modernisation d'une bibliothèque d'automatisme Siemens — blocs PLC en SCL et faceplates HMI
+      développés sous WinCC Comfort — vers les environnements de dernière génération, en
+      garantissant la continuité des fonctionnalités existantes.
+    </p>
+    <p class="lead en">
+      Modernisation of a Siemens automation library — PLC blocks in SCL and HMI faceplates built
+      in WinCC Comfort — to the latest-generation environments, while preserving all existing functionality.
+    </p>
+    <div class="meta">
+      <span>3IA Technology · <span class="fr">Juin – Août 2025</span><span class="en">June – August 2025</span></span>
+      <span>TIA Portal V19 · Step7 · WinCC Unified · WinCC V7.5</span>
+    </div>
+  </div>
+
+  <section style="padding-top:0;border-top:0">
+    <div class="stats">
+      <div class="stat">
+        <div class="value">2</div>
+        <div class="label"><span class="fr">Plateformes cibles : WinCC Unified et WinCC V7.5</span><span class="en">Target platforms: WinCC Unified and WinCC V7.5</span></div>
+      </div>
+      <div class="stat">
+        <div class="value">SCL</div>
+        <div class="label"><span class="fr">Blocs fonctionnels PLC restructurés et migrés</span><span class="en">PLC function blocks restructured and migrated</span></div>
+      </div>
+      <div class="stat">
+        <div class="value">UDT</div>
+        <div class="label"><span class="fr">Structures de données réutilisables par type d'objet</span><span class="en">Reusable data structures per object type</span></div>
+      </div>
+      <div class="stat">
+        <div class="value">JS</div>
+        <div class="label"><span class="fr">Scripts JavaScript pour les fonctions avancées des IHM</span><span class="en">JavaScript scripts for advanced HMI features</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="fr">Contexte</span><span class="en">Context</span></h2>
+    <p class="fr">
+      Les bibliothèques de fonctions permettent de réutiliser, d'un projet à l'autre, des objets
+      standard (moteurs, vannes, mesures analogiques, entrées TOR…) avec leur logique automate et
+      leur faceplate de conduite. La bibliothèque existante, développée sous WinCC Comfort, devait
+      être rendue compatible avec <strong>WinCC Unified</strong> (TIA Portal) et avec
+      <strong>WinCC V7.5</strong> (Step7 / WinCC Explorer).
+    </p>
+    <p class="en">
+      Function libraries make it possible to reuse standard objects (motors, valves, analogue
+      measurements, digital inputs…) across projects, together with their PLC logic and operator
+      faceplate. The existing library, built in WinCC Comfort, had to be made compatible with
+      <strong>WinCC Unified</strong> (TIA Portal) and <strong>WinCC V7.5</strong> (Step7 / WinCC Explorer).
+    </p>
+  </section>
+
+  <section id="realisation">
+    <h2><span class="fr">Réalisation</span><span class="en">Implementation</span></h2>
+
+    <h3><span class="fr">1. Migration vers WinCC Unified</span><span class="en">1. Migration to WinCC Unified</span></h3>
+    <ul class="clean fr">
+      <li>Création d'une bibliothèque de projet et structuration des données en <strong>UDT</strong>.</li>
+      <li>Conception des <strong>faceplates</strong> (vue d'ensemble, messages, courbes, seuils, services) et des pop-ups de navigation.</li>
+      <li>Intégration et adaptation des programmes SCL, ajout de fonctions avancées en <strong>JavaScript</strong>.</li>
+      <li>Tests et validation de chaque objet en simulation.</li>
+    </ul>
+    <ul class="clean en">
+      <li>Creation of a project library and data structuring with <strong>UDTs</strong>.</li>
+      <li>Design of the <strong>faceplates</strong> (overview, messages, trends, limits, services) and navigation pop-ups.</li>
+      <li>Integration and adaptation of the SCL programs, advanced features added in <strong>JavaScript</strong>.</li>
+      <li>Testing and validation of each object in simulation.</li>
+    </ul>
+    <figure>
+      <img src="../assets/img/stage-3ia/unified-moteur.png" alt="" loading="lazy" width="900" height="668">
+      <figcaption>
+        <span class="fr">Faceplate d'un moteur sous WinCC Unified : surveillance, simulation et onglets de navigation.</span>
+        <span class="en">Motor faceplate in WinCC Unified: monitoring, simulation and navigation tabs.</span>
+      </figcaption>
+    </figure>
+    <figure style="max-width:620px">
+      <img src="../assets/img/stage-3ia/unified-analogique.png" alt="" loading="lazy" width="734" height="628">
+      <figcaption>
+        <span class="fr">Faceplate d'une mesure analogique : valeur, seuils, état d'erreur et simulation.</span>
+        <span class="en">Analogue measurement faceplate: value, limits, error status and simulation.</span>
+      </figcaption>
+    </figure>
+
+    <h3><span class="fr">2. Migration vers WinCC V7.5</span><span class="en">2. Migration to WinCC V7.5</span></h3>
+    <ul class="clean fr">
+      <li>Migration du programme SCL de TIA Portal V19 vers <strong>Step7</strong>.</li>
+      <li>Configuration de la communication entre Step7 et <strong>WinCC Explorer</strong> et des variables migrées.</li>
+      <li>Tests et validation des faceplates.</li>
+    </ul>
+    <ul class="clean en">
+      <li>Migration of the SCL program from TIA Portal V19 to <strong>Step7</strong>.</li>
+      <li>Configuration of communication between Step7 and <strong>WinCC Explorer</strong> and of the migrated tags.</li>
+      <li>Testing and validation of the faceplates.</li>
+    </ul>
+    <figure style="max-width:460px">
+      <img src="../assets/img/stage-3ia/wincc75-tor.png" alt="" loading="lazy" width="446" height="388">
+      <figcaption>
+        <span class="fr">Faceplate d'un objet TOR sous WinCC V7.5.</span>
+        <span class="en">Digital object faceplate in WinCC V7.5.</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2><span class="fr">Bilan</span><span class="en">Outcome</span></h2>
+    <div class="callout fr">
+      Une bibliothèque compatible avec les deux plateformes, qui conserve toutes les
+      fonctionnalités d'origine, avec des interfaces plus simples à utiliser et à maintenir.
+    </div>
+    <div class="callout en">
+      A library compatible with both platforms, preserving all the original functionality, with
+      interfaces that are easier to use and maintain.
+    </div>
+    <h3><span class="fr">Outils</span><span class="en">Tools</span></h3>
+    <div class="tags">
+      <span class="tag">TIA Portal V19</span><span class="tag">Step7</span><span class="tag">WinCC Unified</span>
+      <span class="tag">WinCC V7.5</span><span class="tag">WinCC Comfort</span><span class="tag">SCL</span>
+      <span class="tag">UDT</span><span class="tag">Faceplates</span><span class="tag">JavaScript</span>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <a href="../index.html">← <span class="fr">Retour au portfolio</span><span class="en">Back to portfolio</span></a>
+    &nbsp;·&nbsp; © 2026 Mariem Nefzi
+  </div>
+</footer>
+
+<script src="../assets/lang.js"></script>
+</body>
+</html>
