@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="fr" data-lang="fr"
+      data-title-fr="Commande numérique d'un drone quadricoptère – Mariem Nefzi"
+      data-title-en="Digital control of a quadcopter drone – Mariem Nefzi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Commande numérique d'un drone quadricoptère – Mariem Nefzi</title>
+  <meta name="description" content="Bureau d'Études ENIT : modélisation, filtrage de Kalman, commande optimale LQR et implémentation embarquée sur STM32 d'un drone quadricoptère.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container">
+    <a class="brand" href="../index.html">Mariem Nefzi</a>
+    <nav class="nav">
+      <a href="#realisation" class="hide-sm"><span class="fr">Réalisation</span><span class="en">Implementation</span></a>
+      <a href="../index.html#contact" class="hide-sm">Contact</a>
+      <button class="lang-btn" type="button" aria-label="Changer de langue / Switch language">EN</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <a class="back" href="../index.html#projets">
+    <span class="fr">← Tous les projets</span><span class="en">← All projects</span>
+  </a>
+
+  <div class="project-head">
+    <div class="tags" style="margin-bottom:12px">
+      <span class="tag"><span class="fr">Bureau d'Études</span><span class="en">Engineering project</span></span>
+      <span class="tag"><span class="fr">Automatique</span><span class="en">Control</span></span>
+      <span class="tag"><span class="fr">Systèmes embarqués</span><span class="en">Embedded systems</span></span>
+    </div>
+    <h1>
+      <span class="fr">Commande numérique et stabilisation d'un drone quadricoptère</span>
+      <span class="en">Digital control and stabilisation of a quadcopter drone</span>
+    </h1>
+    <p class="lead fr">
+      De la modélisation dynamique à l'implémentation embarquée : estimation de l'attitude par
+      filtre de Kalman, commande optimale LQR simulée sous MATLAB/Simulink, puis portage en C
+      sur microcontrôleur STM32 avec une interface de pilotage en Wi-Fi.
+    </p>
+    <p class="lead en">
+      From dynamic modelling to embedded implementation: attitude estimation with a Kalman
+      filter, LQR optimal control simulated in MATLAB/Simulink, then ported to C on an STM32
+      microcontroller with a Wi-Fi control interface.
+    </p>
+    <div class="meta">
+      <span>ENIT · <span class="fr">Novembre 2025 – Janvier 2026</span><span class="en">November 2025 – January 2026</span></span>
+      <span><span class="fr">Projet en binôme avec Bochra El Haj Ahmed</span><span class="en">Team project with Bochra El Haj Ahmed</span></span>
+      <span>MATLAB/Simulink · STM32 · C · Python</span>
+    </div>
+  </div>
+
+  <section style="padding-top:0;border-top:0">
+    <figure style="margin-top:0">
+      <img src="../assets/img/drone/drone.jpg" alt="" width="1400" height="1050">
+      <figcaption>
+        <span class="fr">Le drone assemblé : châssis, 4 moteurs brushless avec leurs variateurs (ESC) et carte STM32 au centre.</span>
+        <span class="en">The assembled drone: frame, 4 brushless motors with their ESCs and the STM32 board in the centre.</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2><span class="fr">Démarche</span><span class="en">Approach</span></h2>
+    <div class="pipeline" role="img" aria-label="Démarche : modélisation, estimation, commande, implémentation">
+      <div class="step">
+        <strong><span class="fr">Modélisation</span><span class="en">Modelling</span></strong>
+        <span class="fr">Modèle dynamique du quadricoptère, linéarisation</span>
+        <span class="en">Quadcopter dynamic model, linearisation</span>
+      </div>
+      <div class="arrow">→</div>
+      <div class="step">
+        <strong><span class="fr">Estimation</span><span class="en">Estimation</span></strong>
+        <span class="fr">Fusion IMU (accéléromètre, gyroscope, magnétomètre) par filtre de Kalman</span>
+        <span class="en">IMU fusion (accelerometer, gyroscope, magnetometer) with a Kalman filter</span>
+      </div>
+      <div class="arrow">→</div>
+      <div class="stack">
+        <div class="step">
+          <strong><span class="fr">Commande</span><span class="en">Control</span></strong>
+          <span class="fr">PID puis commande optimale LQR (Simulink)</span>
+          <span class="en">PID, then LQR optimal control (Simulink)</span>
+        </div>
+        <div class="step">
+          <strong><span class="fr">Embarqué</span><span class="en">Embedded</span></strong>
+          <span class="fr">Code C sur STM32, PWM moteurs, Wi-Fi</span>
+          <span class="en">C code on STM32, motor PWM, Wi-Fi</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="realisation">
+    <h2><span class="fr">Réalisation</span><span class="en">Implementation</span></h2>
+
+    <h3><span class="fr">1. Estimation de l'attitude</span><span class="en">1. Attitude estimation</span></h3>
+    <p class="fr">
+      Les mesures brutes de la centrale inertielle (IMU) sont bruitées. Un <strong>filtre de
+      Kalman</strong> les fusionne pour obtenir une estimation stable des angles de roulis,
+      tangage et lacet, indispensable à la stabilisation.
+    </p>
+    <p class="en">
+      Raw measurements from the inertial measurement unit (IMU) are noisy. A <strong>Kalman
+      filter</strong> fuses them to obtain a stable estimate of the roll, pitch and yaw angles,
+      which is essential for stabilisation.
+    </p>
+    <figure>
+      <img src="../assets/img/drone/kalman.png" alt="" loading="lazy" width="1919" height="979">
+      <figcaption>
+        <span class="fr">Convergence du gain de Kalman et estimation de la position et de la vitesse à partir de mesures bruitées.</span>
+        <span class="en">Kalman gain convergence and position / velocity estimation from noisy measurements. (Labels in French.)</span>
+      </figcaption>
+    </figure>
+
+    <h3><span class="fr">2. Commande optimale LQR</span><span class="en">2. LQR optimal control</span></h3>
+    <p class="fr">
+      Une commande en deux niveaux (position puis attitude) a été conçue et simulée sous
+      MATLAB/Simulink. La <strong>commande optimale LQR</strong> amène le drone sur ses consignes
+      d'altitude et de position sans dépassement, avec des angles qui reviennent rapidement à zéro.
+    </p>
+    <p class="en">
+      A two-level controller (position, then attitude) was designed and simulated in
+      MATLAB/Simulink. The <strong>LQR optimal controller</strong> brings the drone to its altitude
+      and position setpoints without overshoot, with angles quickly returning to zero.
+    </p>
+    <figure>
+      <img src="../assets/img/drone/simulation-lqr.png" alt="" loading="lazy" width="1146" height="782">
+      <figcaption>
+        <span class="fr">Simulation de la commande LQR : altitude, positions X / Y, angles et vitesses (en pointillés : les consignes).</span>
+        <span class="en">LQR control simulation: altitude, X / Y positions, angles and velocities (dashed: setpoints). (Labels in French.)</span>
+      </figcaption>
+    </figure>
+
+    <h3><span class="fr">3. Implémentation embarquée et pilotage</span><span class="en">3. Embedded implementation and control</span></h3>
+    <p class="fr">
+      La loi de commande a été portée en C sur la carte STM32 (mixage des commandes moteurs,
+      boucle de contrôle principale). Chaque moteur a été calibré et la relation entre le signal
+      PWM et la poussée a été identifiée expérimentalement. Une <strong>interface de pilotage en
+      Python</strong> communique avec le drone en Wi-Fi : armement, décollage, atterrissage, arrêt
+      d'urgence, réglage de la vitesse et de l'altitude, et affichage de l'attitude en temps réel.
+    </p>
+    <p class="en">
+      The control law was ported to C on the STM32 board (motor command mixing, main control
+      loop). Each motor was calibrated and the relation between PWM signal and thrust was
+      identified experimentally. A <strong>Python control interface</strong> talks to the drone
+      over Wi-Fi: arm, take-off, landing, emergency stop, speed and altitude setpoints, and live
+      attitude display.
+    </p>
+    <figure>
+      <img src="../assets/img/drone/interface.png" alt="" loading="lazy" width="1372" height="978">
+      <figcaption>
+        <span class="fr">Interface de pilotage du drone (Python).</span>
+        <span class="en">Drone control interface (Python). (Interface in French.)</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2><span class="fr">Bilan</span><span class="en">Outcome</span></h2>
+    <div class="callout fr">
+      Une chaîne complète de commande, de la théorie à la carte électronique : modèle, estimation,
+      commande optimale, puis code embarqué et interface de pilotage. Les simulations et les tests
+      sur banc ont été validés ; les essais en vol constituent l'étape suivante.
+    </div>
+    <div class="callout en">
+      A complete control chain, from theory to the electronic board: model, estimation, optimal
+      control, then embedded code and control interface. Simulations and bench tests were
+      validated; flight tests are the next step.
+    </div>
+    <h3><span class="fr">Outils</span><span class="en">Tools</span></h3>
+    <div class="tags">
+      <span class="tag">MATLAB</span><span class="tag">Simulink</span><span class="tag">STM32CubeIDE</span>
+      <span class="tag">C</span><span class="tag">Python (Tkinter)</span><span class="tag"><span class="fr">Filtre de Kalman</span><span class="en">Kalman filter</span></span>
+      <span class="tag">LQR</span><span class="tag">PID</span><span class="tag">PWM / ESC</span>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <a href="../index.html">← <span class="fr">Retour au portfolio</span><span class="en">Back to portfolio</span></a>
+    &nbsp;·&nbsp; © 2026 Mariem Nefzi
+  </div>
+</footer>
+
+<script src="../assets/lang.js"></script>
+</body>
+</html>
