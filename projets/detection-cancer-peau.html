@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="fr" data-lang="fr"
+      data-title-fr="Détection du cancer de la peau par traitement d'images – Mariem Nefzi"
+      data-title-en="Skin cancer detection with image processing – Mariem Nefzi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Détection du cancer de la peau par traitement d'images – Mariem Nefzi</title>
+  <meta name="description" content="Bureau d'Études ENIT : détection du cancer de la peau à partir d'images dermoscopiques par traitement d'images et Machine Learning, avec une application web de démonstration.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container">
+    <a class="brand" href="../index.html">Mariem Nefzi</a>
+    <nav class="nav">
+      <a href="#resultats" class="hide-sm"><span class="fr">Résultats</span><span class="en">Results</span></a>
+      <a href="../index.html#contact" class="hide-sm">Contact</a>
+      <button class="lang-btn" type="button" aria-label="Changer de langue / Switch language">EN</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <a class="back" href="../index.html#projets">
+    <span class="fr">← Tous les projets</span><span class="en">← All projects</span>
+  </a>
+
+  <!-- ===== En-tête ===== -->
+  <div class="project-head">
+    <div class="tags" style="margin-bottom:12px">
+      <span class="tag"><span class="fr">Bureau d'Études</span><span class="en">Engineering project</span></span>
+      <span class="tag"><span class="fr">Traitement d'images</span><span class="en">Image processing</span></span>
+      <span class="tag">Machine Learning</span>
+      <span class="tag">Web</span>
+    </div>
+    <h1>
+      <span class="fr">Détection du cancer de la peau à partir d'images dermatologiques</span>
+      <span class="en">Skin cancer detection from dermatological images</span>
+    </h1>
+    <p class="lead fr">
+      Une chaîne complète de traitement d'images — du nettoyage de l'image à la classification
+      bénin / malin — intégrée dans une application web qui affiche le diagnostic et son niveau de confiance.
+    </p>
+    <p class="lead en">
+      A complete image-processing pipeline — from image cleaning to benign / malignant
+      classification — integrated into a web application that displays the result and its confidence level.
+    </p>
+    <div class="meta">
+      <span>ENIT · <span class="fr">Octobre 2025 – Janvier 2026</span><span class="en">October 2025 – January 2026</span></span>
+      <span><span class="fr">Projet en binôme avec Bochra El Haj Ahmed</span><span class="en">Team project with Bochra El Haj Ahmed</span></span>
+      <span>Python · OpenCV · scikit-learn · Flask</span>
+    </div>
+  </div>
+
+  <!-- ===== Chiffres clés ===== -->
+  <section style="padding-top:0;border-top:0">
+    <div class="stats">
+      <div class="stat">
+        <div class="value">87,3 %</div>
+        <div class="label"><span class="fr">Accuracy sur le jeu de test</span><span class="en">Accuracy on the test set</span></div>
+      </div>
+      <div class="stat">
+        <div class="value">0,94</div>
+        <div class="label"><span class="fr">ROC-AUC</span><span class="en">ROC-AUC</span></div>
+      </div>
+      <div class="stat">
+        <div class="value">85,7 %</div>
+        <div class="label"><span class="fr">Des lésions malignes détectées (sensibilité)</span><span class="en">Of malignant lesions detected (sensitivity)</span></div>
+      </div>
+      <div class="stat">
+        <div class="value"><span class="fr">~10 000</span><span class="en">~10,000</span></div>
+        <div class="label"><span class="fr">Images dermoscopiques utilisées</span><span class="en">Dermoscopic images used</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contexte ===== -->
+  <section>
+    <h2><span class="fr">Contexte</span><span class="en">Context</span></h2>
+    <p class="fr">
+      Le mélanome est la forme la plus dangereuse de cancer de la peau, et sa détection précoce
+      améliore fortement le pronostic. Le dépistage repose aujourd'hui sur l'examen visuel d'un
+      dermatologue, qui dépend de son expérience et de sa disponibilité.
+    </p>
+    <p class="en">
+      Melanoma is the most dangerous form of skin cancer, and early detection greatly improves
+      the prognosis. Screening currently relies on visual examination by a dermatologist, which
+      depends on their experience and availability.
+    </p>
+    <p class="fr">
+      L'objectif du projet : <strong>analyser automatiquement une image dermoscopique et indiquer
+      si la lésion est bénigne ou suspecte</strong>, comme outil d'aide au dépistage.
+    </p>
+    <p class="en">
+      The goal of the project: <strong>automatically analyse a dermoscopic image and indicate
+      whether the lesion is benign or suspicious</strong>, as a screening support tool.
+    </p>
+  </section>
+
+  <!-- ===== Démarche ===== -->
+  <section>
+    <h2><span class="fr">Démarche</span><span class="en">Approach</span></h2>
+
+    <div class="pipeline" role="img" aria-label="Pipeline : prétraitement, segmentation, extraction de caractéristiques, classification, application web">
+      <div class="step">
+        <strong><span class="fr">Prétraitement</span><span class="en">Preprocessing</span></strong>
+        <span class="fr">Bordures sombres, poils, contraste (CLAHE)</span>
+        <span class="en">Dark borders, hair removal, contrast (CLAHE)</span>
+      </div>
+      <div class="arrow">→</div>
+      <div class="step">
+        <strong><span class="fr">Segmentation</span><span class="en">Segmentation</span></strong>
+        <span class="fr">Méthode adaptative LAB / HSV selon le contraste</span>
+        <span class="en">Adaptive LAB / HSV method based on contrast</span>
+      </div>
+      <div class="arrow">→</div>
+      <div class="stack">
+        <div class="step">
+          <strong><span class="fr">Caractéristiques</span><span class="en">Features</span></strong>
+          <span class="fr">Forme, couleur et texture (règle ABCD, GLCM)</span>
+          <span class="en">Shape, colour and texture (ABCD rule, GLCM)</span>
+        </div>
+        <div class="step">
+          <strong>Classification</strong>
+          <span class="fr">SVM, choisi parmi 4 modèles</span>
+          <span class="en">SVM, selected among 4 models</span>
+        </div>
+        <div class="step">
+          <strong><span class="fr">Application web</span><span class="en">Web application</span></strong>
+          <span class="fr">Diagnostic et niveau de confiance</span>
+          <span class="en">Result and confidence level</span>
+        </div>
+      </div>
+    </div>
+
+    <h3><span class="fr">1. Prétraitement</span><span class="en">1. Preprocessing</span></h3>
+    <p class="fr">
+      Les images dermoscopiques contiennent des artefacts qui gênent l'analyse. Trois étapes les
+      corrigent : suppression des bordures sombres, élimination des poils (transformation
+      Black-Hat puis <em>inpainting</em>) et amélioration du contraste par CLAHE.
+    </p>
+    <p class="en">
+      Dermoscopic images contain artefacts that interfere with analysis. Three steps correct them:
+      dark border removal, hair removal (Black-Hat transform followed by inpainting) and contrast
+      enhancement with CLAHE.
+    </p>
+    <figure>
+      <img src="../assets/img/cancer-peau/pretraitement.png" alt="" loading="lazy" width="1423" height="429">
+      <figcaption>
+        <span class="fr">Les trois étapes du prétraitement sur une même image.</span>
+        <span class="en">The three preprocessing steps on the same image. (Labels in French.)</span>
+      </figcaption>
+    </figure>
+
+    <h3><span class="fr">2. Segmentation de la lésion</span><span class="en">2. Lesion segmentation</span></h3>
+    <p class="fr">
+      La lésion est isolée de la peau saine par une méthode qui s'adapte à chaque image : seuillage
+      sur la chromaticité LAB pour les images contrastées, seuillage adaptatif HSV pour les images
+      peu contrastées. Des opérations morphologiques nettoient ensuite le masque obtenu.
+    </p>
+    <p class="en">
+      The lesion is separated from healthy skin by a method that adapts to each image: thresholding
+      on LAB chromaticity for high-contrast images, adaptive HSV thresholding for low-contrast ones.
+      Morphological operations then clean up the resulting mask.
+    </p>
+    <figure>
+      <img src="../assets/img/cancer-peau/segmentation.png" alt="" loading="lazy" width="1431" height="436">
+      <figcaption>
+        <span class="fr">Image prétraitée, masque de segmentation et contour de la lésion détectée.</span>
+        <span class="en">Preprocessed image, segmentation mask and detected lesion outline. (Labels in French.)</span>
+      </figcaption>
+    </figure>
+
+    <h3><span class="fr">3. Caractéristiques et classification</span><span class="en">3. Features and classification</span></h3>
+    <p class="fr">
+      Chaque lésion est décrite par des caractéristiques inspirées des critères cliniques
+      (règle ABCD) : <strong>forme</strong> (aire, périmètre, circularité, asymétrie),
+      <strong>couleur</strong> (moyennes et variances des canaux, couleurs dominantes) et
+      <strong>texture</strong> (contraste, énergie, homogénéité et corrélation de la GLCM).
+      Quatre modèles ont été comparés par validation croisée — Random Forest, Gradient Boosting,
+      SVM et régression logistique. Le <strong>SVM</strong>, le meilleur, a ensuite été optimisé.
+    </p>
+    <p class="en">
+      Each lesion is described by features inspired by clinical criteria (ABCD rule):
+      <strong>shape</strong> (area, perimeter, circularity, asymmetry), <strong>colour</strong>
+      (channel means and variances, dominant colours) and <strong>texture</strong> (GLCM contrast,
+      energy, homogeneity and correlation). Four models were compared by cross-validation —
+      Random Forest, Gradient Boosting, SVM and logistic regression. The best one, the
+      <strong>SVM</strong>, was then tuned.
+    </p>
+  </section>
+
+  <!-- ===== Résultats ===== -->
+  <section id="resultats">
+    <h2><span class="fr">Résultats</span><span class="en">Results</span></h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th><span class="fr">Métrique</span><span class="en">Metric</span></th>
+            <th class="num"><span class="fr">Valeur</span><span class="en">Value</span></th>
+            <th><span class="fr">Ce qu'elle mesure</span><span class="en">What it measures</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Accuracy</td><td class="num">87,3 %</td><td><span class="fr">Part des images bien classées</span><span class="en">Share of correctly classified images</span></td></tr>
+          <tr><td><span class="fr">Précision</span><span class="en">Precision</span></td><td class="num">87,7 %</td><td><span class="fr">Part des alertes « malin » justifiées</span><span class="en">Share of "malignant" alerts that are correct</span></td></tr>
+          <tr><td><span class="fr">Sensibilité</span><span class="en">Sensitivity</span></td><td class="num">85,7 %</td><td><span class="fr">Part des lésions malignes détectées</span><span class="en">Share of malignant lesions detected</span></td></tr>
+          <tr><td>F1-score</td><td class="num">86,7 %</td><td><span class="fr">Équilibre précision / sensibilité</span><span class="en">Balance of precision and sensitivity</span></td></tr>
+          <tr class="best"><td>ROC-AUC</td><td class="num">0,94</td><td><span class="fr">Capacité à séparer les deux classes</span><span class="en">Ability to separate the two classes</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3><span class="fr">Application web</span><span class="en">Web application</span></h3>
+    <p class="fr">
+      Le modèle est intégré dans une application web (backend Flask, interface HTML/CSS) :
+      l'utilisateur dépose une image, lance l'analyse et obtient le diagnostic, le niveau de
+      confiance et la répartition des probabilités. Un avertissement rappelle que l'outil
+      ne remplace pas l'avis d'un dermatologue.
+    </p>
+    <p class="en">
+      The model is integrated into a web application (Flask backend, HTML/CSS interface): the user
+      uploads an image, runs the analysis and gets the result, the confidence level and the
+      probability split. A notice reminds users that the tool does not replace a dermatologist's opinion.
+    </p>
+    <figure style="max-width:520px">
+      <img src="../assets/img/cancer-peau/application.png" alt="" loading="lazy" width="728" height="885">
+      <figcaption>
+        <span class="fr">Résultat de l'analyse d'une lésion bénigne dans l'application.</span>
+        <span class="en">Analysis result for a benign lesion in the application. (Interface in French.)</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ===== Conclusions ===== -->
+  <section>
+    <h2><span class="fr">Ce que j'en retiens</span><span class="en">Key takeaways</span></h2>
+    <div class="callout fr">
+      Un prétraitement et une segmentation soignés permettent d'obtenir de bons résultats avec un
+      modèle classique et des caractéristiques interprétables, proches des critères utilisés par les dermatologues.
+    </div>
+    <div class="callout en">
+      Careful preprocessing and segmentation make it possible to reach good results with a classical
+      model and interpretable features, close to the criteria dermatologists use.
+    </div>
+    <h3><span class="fr">Perspectives</span><span class="en">Next steps</span></h3>
+    <ul class="clean fr">
+      <li>Comparer avec un réseau de neurones convolutif (CNN) entraîné directement sur les images.</li>
+      <li>Déployer le système sur une carte embarquée (NVIDIA Jetson) pour une analyse en temps réel.</li>
+      <li>Étendre la classification à plusieurs types de lésions.</li>
+    </ul>
+    <ul class="clean en">
+      <li>Compare with a convolutional neural network (CNN) trained directly on the images.</li>
+      <li>Deploy the system on an embedded board (NVIDIA Jetson) for real-time analysis.</li>
+      <li>Extend the classification to several lesion types.</li>
+    </ul>
+
+    <h3><span class="fr">Outils</span><span class="en">Tools</span></h3>
+    <div class="tags">
+      <span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">scikit-image</span>
+      <span class="tag">scikit-learn</span><span class="tag">pandas</span><span class="tag">Flask</span>
+      <span class="tag">HTML / CSS</span><span class="tag">Jupyter</span>
+    </div>
+    <p class="muted" style="margin-top:18px;font-size:0.88rem">
+      <span class="fr">Projet pédagogique : cet outil n'est pas un dispositif médical.</span>
+      <span class="en">Academic project: this tool is not a medical device.</span>
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <a href="../index.html">← <span class="fr">Retour au portfolio</span><span class="en">Back to portfolio</span></a>
+    &nbsp;·&nbsp; © 2026 Mariem Nefzi
+  </div>
+</footer>
+
+<script src="../assets/lang.js"></script>
+</body>
+</html>
