@@ -126,6 +126,7 @@ p { margin: 0 0 14px; }
 
 figure { margin: 22px 0 6px; }
 figure img { border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+figure video { width: 100%; display: block; border: 1px solid var(--line); border-radius: 8px; background: #000; }
 figcaption { font-size: 0.88rem; color: var(--muted); margin-top: 8px; }
 
 .table-wrap { overflow-x: auto; margin: 10px 0 6px; }
